@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="9" total="10" passed="1" failed="0" skipped="0">
+<testng-results ignored="7" total="8" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2021-03-13T13:59:23Z" name="Default suite" finished-at="2021-03-13T13:59:32Z" duration-ms="9655">
+  <suite started-at="2021-03-13T18:37:45Z" name="Default suite" finished-at="2021-03-13T18:37:54Z" duration-ms="8728">
     <groups>
     </groups>
-    <test started-at="2021-03-13T13:59:23Z" name="Default test" finished-at="2021-03-13T13:59:32Z" duration-ms="9655">
-      <class name="com.crm.qa.testcases.LoginPageTest">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.crm.qa.testcases.LoginPageTest@20140db9]" started-at="2021-03-13T19:29:23Z" name="setUp" finished-at="2021-03-13T19:29:28Z" duration-ms="4745" status="PASS">
+    <test started-at="2021-03-13T18:37:45Z" name="Default test" finished-at="2021-03-13T18:37:54Z" duration-ms="8728">
+      <class name="com.crm.qa.testcases.HomePageTest">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.crm.qa.testcases.HomePageTest@1c7696c6]" started-at="2021-03-14T00:07:45Z" name="setup" finished-at="2021-03-14T00:07:51Z" duration-ms="5866" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- setUp -->
-        <test-method signature="noCredentials()[pri:10, instance:com.crm.qa.testcases.LoginPageTest@20140db9]" started-at="2021-03-13T19:29:28Z" name="noCredentials" finished-at="2021-03-13T19:29:32Z" duration-ms="4134" status="PASS">
+        </test-method> <!-- setup -->
+        <test-method signature="nologoutTest()[pri:7, instance:com.crm.qa.testcases.HomePageTest@1c7696c6]" started-at="2021-03-14T00:07:51Z" name="nologoutTest" finished-at="2021-03-14T00:07:53Z" duration-ms="2094" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- noCredentials -->
-        <test-method is-config="true" signature="close()[pri:0, instance:com.crm.qa.testcases.LoginPageTest@20140db9]" started-at="2021-03-13T19:29:32Z" name="close" finished-at="2021-03-13T19:29:32Z" duration-ms="754" status="PASS">
+        </test-method> <!-- nologoutTest -->
+        <test-method is-config="true" signature="close()[pri:0, instance:com.crm.qa.testcases.HomePageTest@1c7696c6]" started-at="2021-03-14T00:07:53Z" name="close" finished-at="2021-03-14T00:07:54Z" duration-ms="743" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- close -->
-      </class> <!-- com.crm.qa.testcases.LoginPageTest -->
+      </class> <!-- com.crm.qa.testcases.HomePageTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

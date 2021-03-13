@@ -83,8 +83,8 @@ public class LoginPage extends TestBase {
 		driver.findElement(By.xpath("//input[@name='email']")).sendKeys("testase@gmail.com");
 		driver.findElement(By.xpath("//input[@name='password']")).sendKeys("12345678");
 		driver.findElement(By.xpath("//span[text()='Login']")).click();	
-		Thread.sleep(8000);
-		String alert1=driver.findElement(By.xpath("//div[text()='Invalid Credentials!, Please try with Valid ones']")).getText();
+		Thread.sleep(3000);
+		String alert1=driver.findElement(By.xpath("//div[@class='MuiAlert-message']")).getAttribute("value");
 		System.out.println("The Alert is:"+alert1);
 		
 	}
