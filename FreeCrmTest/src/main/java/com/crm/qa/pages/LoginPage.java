@@ -1,5 +1,6 @@
 package com.crm.qa.pages;
 
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -22,8 +23,7 @@ public class LoginPage extends TestBase {
 	@FindBy(className = "MuiButton-label")
 	WebElement loginBtn;
 
-	@FindBy(name = "/market-survey")
-	WebElement pD;
+	
 
 	public LoginPage() {
 		PageFactory.initElements(driver, this);
@@ -33,52 +33,65 @@ public class LoginPage extends TestBase {
 		return driver.getTitle();
 	}
 
-	public HomePage login(String em, String pwd) {
+	public HomePage loginTest(String em, String pwd) throws IOException {
 		email.sendKeys(em);
 		password.sendKeys(pwd);
 		loginBtn.click();
-		pD.click();
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		WebElement disr = driver.findElement(By.xpath("//div[@class='combutton noMarginRight']"));
-		disr.click();
-		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-		WebElement add = driver.findElement(By.xpath("//input[@value='New One']"));
-		add.click();
-		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-		WebElement submit = driver.findElement(By.xpath("//div[@class='combutton flexCenterLabel']"));
-		submit.click();
-		WebElement logout = driver.findElement(By.xpath("//div[contains(text(),'LOGOUT')]"));
-		logout.click();
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		System.out.println(driver.switchTo().alert().getText());
-		driver.switchTo().alert().accept();
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		WebElement newuser = driver.findElement(By.xpath("//div[contains(text(),'New user?')]"));
-		newuser.click();
-		WebElement source = driver.findElement(By.name("firstName"));
-		source.click();
-		source.sendKeys("subi");
-		source.sendKeys(Keys.TAB);
-		WebElement dest = driver.findElement(By.name("lastName"));
-		dest.sendKeys("kumar");
-		dest.sendKeys(Keys.TAB);
-		WebElement ema = driver.findElement(By.name("email"));
-		ema.sendKeys("subi5@gmail.com");
-		ema.sendKeys(Keys.TAB);
-		WebElement phn = driver.findElement(By.name("phone"));
-		phn.sendKeys("8675832915");
-		phn.sendKeys(Keys.TAB);
-		WebElement pwsd = driver.findElement(By.name("password"));
-		pwsd.sendKeys("12345678");
-		pwsd.sendKeys(Keys.TAB);
-		WebElement slt = driver.findElement(By.id("mui-component-select-role"));
-		slt.sendKeys(Keys.ENTER);
-		WebElement dropdwn = driver.findElement(By.xpath("//li[@data-value='6aac7b66-7864-4c83-beee-2bd4e5cfd21e']"));
-		dropdwn.sendKeys(Keys.ENTER);
-		dropdwn.sendKeys(Keys.TAB);
-		WebElement sign = driver.findElement(By.className("MuiButton-label"));
-		sign.click();
+	
 
 		return new HomePage();
+
 	}
+
+	
+	public void emptyEmailLogin() throws InterruptedException {
+		driver.findElement(By.xpath("//input[@name='password']")).sendKeys("123");
+		driver.findElement(By.xpath("//span[text()='Login']")).click();	
+	    Thread.sleep(4000);	
+	}
+	
+	public void emptyEmailLoginAlert() throws InterruptedException {
+		driver.findElement(By.xpath("//input[@name='password']")).sendKeys("123");
+		driver.findElement(By.xpath("//span[text()='Login']")).click();	
+	    Thread.sleep(4000);	
+	    String alert= driver.findElement(By.xpath("//div[text()='Enter Your Valid Email ID']")).getText();
+	    System.out.println("The Alert is:"+alert);
+	}
+	public void emptyPasswordLogin() throws InterruptedException {
+		driver.findElement(By.xpath("//input[@name='email']")).sendKeys("testase@gmail.com");
+		driver.findElement(By.xpath("//span[text()='Login']")).click();	
+	    Thread.sleep(4000);	
+	}
+	
+	public void whiteSpaceEmailLogin() throws InterruptedException {
+		driver.findElement(By.xpath("//input[@name='email']")).sendKeys(Keys.SPACE);
+		driver.findElement(By.xpath("//span[text()='Login']")).click();	
+		Thread.sleep(4000);
+	}
+	public void whiteSpacePasswordLogin() throws InterruptedException {
+		driver.findElement(By.xpath("//input[@name='password']")).sendKeys(Keys.SPACE);
+		driver.findElement(By.xpath("//span[text()='Login']")).click();	
+		Thread.sleep(4000);
+	}
+	public void wrongPasswordLogin() throws InterruptedException {
+		driver.findElement(By.xpath("//input[@name='email']")).sendKeys("testase@gmail.com");
+		driver.findElement(By.xpath("//input[@name='password']")).sendKeys("12345678");
+		driver.findElement(By.xpath("//span[text()='Login']")).click();	
+		Thread.sleep(4000);
+	}
+	public void wrongPasswordLoginAlert() throws InterruptedException {
+		driver.findElement(By.xpath("//input[@name='email']")).sendKeys("testase@gmail.com");
+		driver.findElement(By.xpath("//input[@name='password']")).sendKeys("12345678");
+		driver.findElement(By.xpath("//span[text()='Login']")).click();	
+		Thread.sleep(8000);
+		String alert1=driver.findElement(By.xpath("//div[text()='Invalid Credentials!, Please try with Valid ones']")).getText();
+		System.out.println("The Alert is:"+alert1);
+		
+	}
+	public void noUserCredentials() throws InterruptedException {
+		driver.findElement(By.xpath("//span[text()='Login']")).click();	
+		Thread.sleep(4000);
+	}
+	
+
 }
