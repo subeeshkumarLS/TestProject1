@@ -32,7 +32,7 @@ public class LoginPageTest extends TestBase {
 	}
 
 	@Test(priority = 2)
-	public void loginTest() throws IOException {
+	public void loginTest() throws IOException, InterruptedException {
 		homePage = loginPage.loginTest(prop.getProperty("email"), prop.getProperty("password"));
 	}
 	

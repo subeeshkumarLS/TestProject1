@@ -21,7 +21,7 @@ public class HomePageTest extends TestBase {
 	}
 	
 	@BeforeMethod
-	public void setup() throws IOException
+	public void setup() throws IOException, InterruptedException
 	{
 		init();
 		login = new LoginPage();

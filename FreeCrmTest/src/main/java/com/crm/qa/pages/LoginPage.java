@@ -13,6 +13,8 @@ import org.openqa.selenium.support.ui.Select;
 import com.crm.qa.base.TestBase;
 
 public class LoginPage extends TestBase {
+	
+	
 
 	@FindBy(name = "email")
 	WebElement email;
@@ -33,12 +35,11 @@ public class LoginPage extends TestBase {
 		return driver.getTitle();
 	}
 
-	public HomePage loginTest(String em, String pwd) throws IOException {
+	public HomePage loginTest(String em, String pwd) throws IOException, InterruptedException {
 		email.sendKeys(em);
 		password.sendKeys(pwd);
 		loginBtn.click();
-	
-
+		Thread.sleep(4000);
 		return new HomePage();
 
 	}
@@ -93,5 +94,15 @@ public class LoginPage extends TestBase {
 		Thread.sleep(4000);
 	}
 	
+	public SignUpPage navigateToSignUp() throws IOException {
+		driver.findElement(By.xpath("//div[text()='New user? click here to Sign up']")).click();
+		return new SignUpPage();
+	}
+	
+	public void validateNewUser()
+	{
+		driver.findElement(By.xpath("//div[text()='New user? click here to Sign up']")).click();
+		driver.findElement(By.xpath("//span[text()='Sign Up']")).click();
+	}
 
 }
